@@ -50,58 +50,57 @@ const showData = (data) => {
 }
 
 
+
+
 const showDetails = (target) => {
-    const singleData = `https://openapi.programming-hero.com/api/ai/tool/${'01'}`
 
-    fetch(singleData)
+    const modal = document.getElementById('my_modal_3');
+
+    const singleDataApi = `https://openapi.programming-hero.com/api/ai/tool/${target.getAttribute('data_key')}`
+    fetch(singleDataApi)
         .then(res => res.json())
-        .then(signleDataObj => singleDataShow(signleDataObj))
+        .then(signleDataObj => {
+            singleDataShow(signleDataObj
+
+            )
+        })
 
 
-
-    const singleDataShow = (signleDataObj) => {
-
-
-        console.log(target.getAttribute('data_key'))
+    if (modal) {
+        modal.remove();
     }
 
+    //creating modal data
+    const singleDataShow = (signleDataObj) => {
+
+        const singleDataidId = signleDataObj.data.id;
+
+
+        const createModal = document.createElement('div');
 
 
 
+        createModal.innerHTML = `
 
 
-    //     const arrowBtnId = target.getAttribute('id');
+                            <dialog id="my_modal_3" class="modal">
+                            <form method="dialog" class="modal-box">
 
-    //     document.getElementById('my_modal_3').showModal()
+                            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
 
-    //     console.log(arrowBtnId)
+                            <div>
+                                    ${singleDataidId}
+                            </div>
+
+                            <p class="py-4">Press ESC key or click on ✕ button to close</p>
+                            </form>
+                            </dialog>
+                      `
+
+        document.getElementById('modalParent').appendChild(modal)
+        modal.showModal()
+
+        console.log(singleDataidId)
+    }
+
 }
-
-
-
-
-
-// //creating modal data
-
-// const modal = document.createElement('div');
-// modal.innerHTML = `
-
-
-//                             <dialog id="my_modal_3" class="modal">
-//                             <form method="dialog" class="modal-box">
-
-//                             <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-
-//                             <>
-//                             </div>
-
-
-
-//                             <p class="py-4">Press ESC key or click on ✕ button to close</p>
-//                             </form>
-//                             </dialog>
-
-
-//                       `
-
-// document.getElementById('modalParent').appendChild(modal)
