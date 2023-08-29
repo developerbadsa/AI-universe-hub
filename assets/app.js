@@ -11,7 +11,6 @@ const showData = (data) => {
         const div = document.createElement('div')
         div.innerHTML = `
         
-        
                   <div class="card bg-base-100 shadow-xl p-4">
                         <figure><img class="w-[95%]" src="${element.image}" /></figure>
                         <div class="card-body">
@@ -30,7 +29,7 @@ const showData = (data) => {
                                           </svg>${element.published_in}</div>
                                 </div>
                                 <div>
-                                    <button id="showModalHere" onclick="showDetails(this)" class="btn rounded-full">
+                                    <button id="showModalHere" onclick="showDetails(this)" class="btn rounded-full" data_key="${element.id}">
                                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                           <g id="Frame">
                                           <path id="Vector" d="M4.5 12H19.5M19.5 12L12.75 5.25M19.5 12L12.75 18.75" stroke="#EB5757" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -41,47 +40,68 @@ const showData = (data) => {
                             </div>
                         </div>
                     </div>
-        
-        
-        
-        
+
         `
-
-
+            //document.getElementById('showModalHere').setAttribute('data_key', 'element.id')
         document.getElementById('cards-container').appendChild(div)
 
-
-
-        //creating modal data
-
-        const modal = document.createElement('div');
-        modal.innerHTML = `
-        
-    
-                            <dialog id="my_modal_3" class="modal">
-                            <form method="dialog" class="modal-box">
-                            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                            <h3 class="font-bold text-lg">Hello!</h3>
-                            <p class="py-4">Press ESC key or click on ✕ button to close</p>
-                            </form>
-                            </dialog>
-        
-        
-                      `
-
-        document.getElementById('modalParent').appendChild(modal)
 
     });
 }
 
 
 const showDetails = (target) => {
+    const singleData = `https://openapi.programming-hero.com/api/ai/tool/${'01'}`
+
+    fetch(singleData)
+        .then(res => res.json())
+        .then(signleDataObj => singleDataShow(signleDataObj))
 
 
 
-    const arrowBtnId = target.getAttribute('id');
+    const singleDataShow = (signleDataObj) => {
 
-    document.getElementById('my_modal_3').showModal()
 
-    console.log(arrowBtnId)
+        console.log(target.getAttribute('data_key'))
+    }
+
+
+
+
+
+
+    //     const arrowBtnId = target.getAttribute('id');
+
+    //     document.getElementById('my_modal_3').showModal()
+
+    //     console.log(arrowBtnId)
 }
+
+
+
+
+
+// //creating modal data
+
+// const modal = document.createElement('div');
+// modal.innerHTML = `
+
+
+//                             <dialog id="my_modal_3" class="modal">
+//                             <form method="dialog" class="modal-box">
+
+//                             <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+
+//                             <>
+//                             </div>
+
+
+
+//                             <p class="py-4">Press ESC key or click on ✕ button to close</p>
+//                             </form>
+//                             </dialog>
+
+
+//                       `
+
+// document.getElementById('modalParent').appendChild(modal)
