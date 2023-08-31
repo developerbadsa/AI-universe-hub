@@ -70,19 +70,15 @@ const showDetails = (target) => {
         modal.remove();
     }
 
+
+
     //creating modal data
     const singleDataShow = (signleDataObj) => {
 
         const singleDataidId = signleDataObj.data.id;
+        const description = signleDataObj.data.description;
 
-
-        const createModal = document.createElement('div');
-
-
-
-        createModal.innerHTML = `
-
-
+        document.createElement('div').innerHTML = `
                             <dialog id="my_modal_3" class="modal">
                             <form method="dialog" class="modal-box">
 
@@ -100,7 +96,7 @@ const showDetails = (target) => {
         document.getElementById('modalParent').appendChild(modal)
         modal.showModal()
 
-        console.log(singleDataidId)
+        console.log(signleDataObj.data.pricing)
     }
 
 }
