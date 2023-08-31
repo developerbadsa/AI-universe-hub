@@ -54,49 +54,115 @@ const showData = (data) => {
 
 const showDetails = (target) => {
 
+
+    //     const singleDataApi = `https://openapi.programming-hero.com/api/ai/tool/${target.getAttribute('data_key')}`
+    //     fetch(singleDataApi)
+    //         .then(res => res.json())
+    //         .then(signleDataObj => {
+    //             singleDataShow(signleDataObj
+
+    //             )
+    //         })
+
+
+    //     if (modal) {
+    //         modal.remove();
+    //     }
+
+
+    const createdModal = document.createElement('div');
+
+    createdModal.innerHTML = `
+
+          <dialog id="my_modal_3" class="modal">
+          <form method="dialog" class="bg-white relative  p-16 rounded w-[900px]">
+              <button class="btn btn-sm btn-circle btn-ghost absolute -right-4 -top-4 bg-red-500 text-white">✕</button>
+
+              <!-- Content section -->
+              <div class="flex items-center">
+
+
+
+                  <!-- content area -->
+                  <div class="flex-1 border bg-pink-50 rounded border-red-200 p-5">
+                      <h2 class="text-xl font-semibold my-4">ChatGPT is an AI-powered chatbot platform that uses OpenAI's GPT technology to simulate human conversation.</h2>
+                      <div class="flex justify-between">
+                          <div class="bg-white p-4 text-green-600 text-center mx-3 rounded-md">
+                              $10/month Basic
+                          </div>
+                          <div class="bg-white p-4 text-amber-500 text-center mx-3 rounded-md">
+                              $10/month Basic
+                          </div>
+                          <div class="bg-white p-4 text-red-700 text-center mx-3 rounded-md">
+                              $10/month Basic
+                          </div>
+                      </div>
+                      <div class="flex my-4">
+                          <div class="flex-1">
+                              <h3 class="text-2xl font-semibold">Features</h3>
+                              <ul type="disc" class="list-disc my-3 ml-4 text-gray-500">
+                                  <li>d</li>
+                                  <li>dfd</li>
+                              </ul>
+                          </div>
+                          <div class="flex-1">
+                              <h3 class="text-2xl font-semibold">Integrations</h3>
+                              <ul class="list-disc my-3 ml-4 text-gray-500">
+                                  <li>d</li>
+                                  <li>dfd</li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+
+
+                  <!-- img area bannaer -->
+                  <div class="flex-1 p-4 text-center border rounded m-6">
+                      <img src="assets/img/chatgpt_assistente 1.png" alt="">
+                      <h3 class="text-xl font-semibold my-4"> simulate human conversation.</h3>
+                      <p>I'm doing well, thank you for asking. How can I assist you today?</p>
+                  </div>
+              </div>
+          </form>
+      </dialog>
+             `
+
+    document.getElementById('modalParent').appendChild(createdModal);
+
+
+
+    singleDataShow({})
+
+
+    console.log('working')
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//creating modal data
+const singleDataShow = (signleDataObj) => {
+
     const modal = document.getElementById('my_modal_3');
 
-    const singleDataApi = `https://openapi.programming-hero.com/api/ai/tool/${target.getAttribute('data_key')}`
-    fetch(singleDataApi)
-        .then(res => res.json())
-        .then(signleDataObj => {
-            singleDataShow(signleDataObj
-
-            )
-        })
-
-
-    if (modal) {
-        modal.remove();
-    }
+    //   const singleDataidId = signleDataObj.data.id;
+    //   const description = signleDataObj.data.description;
 
 
 
-    //creating modal data
-    const singleDataShow = (signleDataObj) => {
+    modal.showModal()
 
-        const singleDataidId = signleDataObj.data.id;
-        const description = signleDataObj.data.description;
-
-        document.createElement('div').innerHTML = `
-                            <dialog id="my_modal_3" class="modal">
-                            <form method="dialog" class="modal-box">
-
-                            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-
-                            <div>
-                                    ${singleDataidId}
-                            </div>
-
-                            <p class="py-4">Press ESC key or click on ✕ button to close</p>
-                            </form>
-                            </dialog>
-                      `
-
-        document.getElementById('modalParent').appendChild(modal)
-        modal.showModal()
-
-        console.log(signleDataObj.data.pricing)
-    }
-
+    //console.log(signleDataObj.data.pricing)
+    console.log('in')
 }
